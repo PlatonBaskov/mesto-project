@@ -23,4 +23,4 @@
 
 **Хостинг**
 
-* [Сайт выложен на хостинг](...)
+* [Сайт выложен на хостинг](https://platonbaskov.github.io/mesto-project/index.html)
