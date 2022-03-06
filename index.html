@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="Россия, путешествия, фото, фотографии, страна, родина, Новгород, Карелия, Алтай, красота" />
+        <meta name="description" content="Галерея лучших туристических мест РФ." />
+        <meta name="Author" content="Платон Басков" />
+        <title>Mesto Russia</title>
+        <link rel="stylesheet" href="./pages/index.css" />
+    </head>
+    <body class="page">
+        <header class="header page__centered-block">
+            <img class="header__image" src="./images/mesto-logo.svg" alt="Логотип Место" />
+        </header>
+        <main>
+            <section class="profile page__centered-block">
+                <img class="profile__image" src="./images/user-pic(1).jpg" alt="Аватар пользователя" />
+                <div class="profile__info">
+                    <div class="profile__name-container">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <p class="profile__profession">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button" type="button"></button>
+            </section>
+            <section class="photo-cards page__centered-block">
+                <ul class="photo-cards__elements">
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/red-vale.jpg" alt="Красная поляна" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Красная поляна</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/severny-ural.jpg" alt="Северный Урал" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Северный Урал</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/baykal.jpg" alt="Байкал" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Байкал</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/lensky-stolb-yakutia.jpg" alt="Ленские Столбы Якутия" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Ленские столбы</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/velikiy_novgorod_3_0.jpg" alt="Великий Новгород" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Великий Новгород</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                    <li class="photo-card">
+                        <img class="photo-card__image" src="./images/vyborg.jpg" alt="Выборг" />
+                        <div class="photo-card__info">
+                            <h2 class="photo-card__title">Выборг</h2>
+
+                            <button class="photo-card__like-icon" type="button"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer page__centered-block">
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+        <!-- Заготовка для попапа окна -->
+        <div class="popup">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <button class="popup__close-button" type="button"></button>
+                <form class="form" name="user-info">
+                    <fieldset class="form__input-container">
+                        <input type="text" name="user-name" class="form__item" value="Жак-Ив Кусто" placeholder="Кто ты?" />
+                        <input type="text" name="user-profession" class="form__item" value="Исследователь океана" placeholder="Какова твоя профессия?" />
+                    </fieldset>
+                    <input class="form__submit-button" type="submit" value="Сохранить" />
+                </form>
+            </div>
+        </div>
+        <!-- Заготовка для попапа окна -->
+    </body>
+</html>

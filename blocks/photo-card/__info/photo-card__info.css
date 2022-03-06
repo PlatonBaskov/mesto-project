@@ -1,0 +1,8 @@
+.photo-card__info {
+    display: flex;
+    align-items: center;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 79px;
+}
