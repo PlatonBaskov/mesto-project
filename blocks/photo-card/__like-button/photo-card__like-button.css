@@ -1,4 +1,4 @@
-.photo-card__like-icon {
+.photo-card__like-button {
     width: 22px;
     height: 19px;
     border: none;
@@ -8,10 +8,10 @@
     transition: all 0.5s ease-in-out;
     background-image: url('../../../images/like-icon-unactive.svg');
 }
-.photo-card__like-icon:hover {
+.photo-card__like-button:hover {
     opacity: 0.5;
 }
-.photo-card__like-icon:active {
+.photo-card__like-button:active {
     background-image: url("../../../images/like-icon-active.svg");
     background-size: cover;
     opacity: 1;

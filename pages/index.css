@@ -1,11 +1,11 @@
 @import url('../vendor/normalize.css');
-@import url('../fonts/fonts.css');
+@import url('../vendor/fonts/fonts.css');
 
 @import url('../blocks/page/page.css');
 @import url('../blocks/page/__centered-block/page__centered-block.css');
 
 @import url('../blocks/header/header.css');
-@import url('../blocks/header/__image/header__image.css');
+@import url('../blocks/header/__logo/header__logo.css');
 
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/profile/__info/profile__info.css');
@@ -23,7 +23,7 @@
 @import url('../blocks/photo-card/__image/photo-card__image.css');
 @import url('../blocks/photo-card/__info/photo-card__info.css');
 @import url('../blocks/photo-card/__title/photo-card__title.css');
-@import url('../blocks/photo-card/__like-icon/photo-card__like-icon.css');
+@import url('../blocks/photo-card/__like-button/photo-card__like-button.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
