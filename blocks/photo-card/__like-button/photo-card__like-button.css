@@ -10,6 +10,7 @@
 }
 .photo-card__like-button:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
 .photo-card__like-button:active {
     background-image: url("../../../images/like-icon-active.svg");
