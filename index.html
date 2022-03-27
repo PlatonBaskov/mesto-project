@@ -34,10 +34,10 @@
             <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
         <!-- Форма изменения профиля -->
-        <div class="popup">
+        <div class="popup profile-popup">
             <div class="popup__container">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <button class="popup__close-button" type="button"></button>
+                <button class="popup__close-button" type="button" name="close-profile-popup"></button>
                 <form class="form" name="user-info">
                     <fieldset class="form__input-container">
                         <input type="text" name="user-name" class="form__item" placeholder="Ваше имя?" required/>
@@ -49,10 +49,10 @@
         </div>
         <!-- Форма изменения профиля -->
         <!-- Форма добавления картинки -->
-        <div class="popup">
+        <div class="popup add-place-popup">
             <div class="popup__container">
                 <h2 class="popup__title">Новое место</h2>
-                <button class="popup__close-button" type="button"></button>
+                <button class="popup__close-button" type="button" name="close-add-popup"></button>
                 <form class="form" name="add-new-place">
                     <fieldset class="form__input-container">
                         <input type="text" name="place-name" class="form__item" placeholder="Название" required/>
@@ -76,14 +76,14 @@
         </template>
         <!-- Шаблон карточки для галереи-->
         <!--Открытие картинки по клику-->
-        <div class="popup">
+        <div class="popup image-popup">
             <figure class="popup__figure">
-                <button class="popup__close-button" type="button"></button>
+                <button class="popup__close-button" type="button" name="close-image-popup"></button>
                 <img class="popup__image" src="" alt ="">
                 <figcaption class="popup__caption">
                 </figcaption>
             </figure>
         </div>
-    <script src="./script.js"></script>
+    <script src="./scripts/script.js"></script>
     </body>
 </html>
