@@ -91,11 +91,120 @@ initialCards.forEach((item) => {
 
 function openPopup(popup){
   popup.classList.add(`popup_opened`);
+/*валидация запускается после открытия попапа*/ 
+  enableValidation({
+  popupSelector:'.popup_opened',
+  formSelector: '.form',
+  inputSelector: '.form__item',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_inactive',
+  inputErrorClass: 'form__item_type_error',
+  errorClass: 'form__input-error_active'
+}); 
+/*запускаем "ручки" для закрытия попапа кнопкой*/
+  popup.addEventListener('click', closePopupWithMouse)
+  document.addEventListener('keydown', closePopupWithEsc)
 };
 
 function closePopup(popup){
   popup.classList.remove(`popup_opened`);
+}
+
+function closePopupWithMouse(evt) {
+ 
+  if(evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
+  evt.target.removeEventListener('click', closePopupWithMouse);
 };
+
+function closePopupWithEsc(evt) {
+
+  if(evt.key === 'Escape'){
+  closePopup(document.querySelector('.popup_opened'));
+}
+
+  document.removeEventListener('keydown', closePopupWithEsc);
+};
+
+function enableValidation(settings) {
+
+const popupElement = document.querySelector(settings.popupSelector) 
+const form = popupElement.querySelector(settings.formSelector)
+console.log(popupElement)
+console.log('Запуск валидации')
+console.log(form)
+if(form !== null) {
+  setEventListeners(popupElement, form, settings)
+  console.log('Пройдена проверка, что форма не пуста')
+  }
+}
+
+function setEventListeners(popupElement, formElement, settings) {
+  console.log('запущена установка слушателей событий')
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const submitButton = formElement.querySelector(settings.submitButtonSelector);
+  console.log('Первая проверка состояния кнопки')
+  toggleSubmitButton(inputList, submitButton, settings);
+  
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement, settings);
+      console.log('Установка слушателей на каждый инпут')
+      toggleSubmitButton(inputList, submitButton, settings);
+    });
+  });
+  
+};
+
+function checkInputValidity(formElement, inputElement, settings) {
+console.log('Проверка валидности поля')
+  if (!inputElement.validity.valid) {
+console.log('Невалидно')
+    showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+  } else {
+console.log('валидно')
+    hideInputError(formElement, inputElement, settings);
+  }
+};
+
+function hasInvalidInput(inputList){
+console.log('Проверка валидности всех полей одновременно')
+  return inputList.some((inputItem) => {
+    return !inputItem.validity.valid;
+  });
+};
+
+function toggleSubmitButton(inputList, buttonElement, settings){
+  if(hasInvalidInput(inputList)){
+console.log('одно из полей невалидно')
+    buttonElement.classList.add(settings.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
+  } else {
+console.log('все поля валидны')
+    buttonElement.classList.remove(settings.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
+  };
+};
+
+
+function showInputError(formElement, inputElement, errorMessage, settings) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(`показать ошибку для ${errorElement}`)
+  inputElement.classList.add(settings.inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(settings.errorClass);
+};
+
+function hideInputError(formElement, inputElement, settings) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(`убрать ошибку для ${errorElement}`)
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
+  errorElement.textContent = '';
+  
+};
+
 
 function editProfile() {
   inputName.value = userName.textContent;
@@ -109,6 +218,7 @@ function submitProfileEdition (evt) {
   const jobValue = inputJob.value;
   userName.textContent = nameValue;
   userJob.textContent = jobValue;
+  profilePopup.removeEventListener('submit', submitProfileEdition)
   closePopup(profilePopup)
 };
 
@@ -121,6 +231,8 @@ function submitPlaceAdding (evt) {
   evt.target.reset();
 };
 
+
+
 editProfileBtn.addEventListener( 'click', ()=> editProfile());
 addPlaceBtn.addEventListener('click', ()=> openPopup(addPlacePopup));
 editProfileForm.addEventListener('submit', submitProfileEdition);
@@ -128,4 +240,7 @@ addPlaceForm.addEventListener(`submit`, submitPlaceAdding);
 closeProfilePopupBtn.addEventListener( 'click', ()=> closePopup(profilePopup));
 closeAddPopupBtn.addEventListener( 'click', ()=> closePopup(addPlacePopup));
 closeImagePopupBtn.addEventListener( 'click', ()=> closePopup(imagePopup));
+
+console.log(editProfileForm)
+
 
