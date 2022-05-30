@@ -7,7 +7,6 @@
         <meta name="description" content="Галерея лучших туристических мест РФ." />
         <meta name="Author" content="Платон Басков" />
         <title>Mesto Russia</title>
-        <link rel="stylesheet" href="./pages/index.css" />
     </head>
     <body class="page">
         <header class="header page__centered-block">
@@ -15,7 +14,7 @@
         </header>
         <main>
             <section class="profile page__centered-block">  
-                <img class="profile__image" src="./images/user-pic(1).jpg" alt="Аватар пользователя" />
+                <img class="profile__image" src="<%=require('./images/user-pic(1).jpg')%>" alt="Аватар пользователя" />
                 <div class="profile__info">
                     <div class="profile__name-container">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -96,8 +95,5 @@
                 </figcaption>
             </figure>
         </div>
-        <script type="module" src="./src/components/index.js"></script>
-        <script type="module" src="./src/components/cards.js"></script>
-        <script type="module" src="./src/components/utils.js"></script>
     </body>
 </html>

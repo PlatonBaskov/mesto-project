@@ -2,6 +2,7 @@ import { addCard, initialCards } from "./cards.js";
 import { openPopup, closePopup } from "./utils.js";
 import { enableValidation } from "./validate.js";
 import { editProfile, submitProfileEdition, submitPlaceAdding } from "./modale.js";
+import '../pages/index.css';
 
 const page = document.querySelector(`.page`),
       profilePopup = page.querySelector(`.profile-popup`),
