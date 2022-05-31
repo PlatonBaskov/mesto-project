@@ -6,20 +6,20 @@ function openPopup(popup) {
   
 function closePopup(popup){
   popup.classList.remove(`popup_opened`);
+  popup.removeEventListener('click', closePopupWithMouse);
+  document.removeEventListener('keydown', closePopupWithEsc);
 };
   
 function closePopupWithMouse(evt) {
   if(evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target);
   }
-  evt.target.removeEventListener('click', closePopupWithMouse);
 };
   
 function closePopupWithEsc(evt) {
   if(evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   };
-  document.removeEventListener('keydown', closePopupWithEsc);
 };
 
 export { openPopup, closePopup };

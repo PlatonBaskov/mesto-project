@@ -21,7 +21,6 @@ function submitProfileEdition (evt) {
         jobValue = inputJob.value;
   userName.textContent = nameValue;
   userJob.textContent = jobValue;
-  profilePopup.removeEventListener('submit', submitProfileEdition);
   closePopup(profilePopup)
 };
   
