@@ -14,7 +14,8 @@ const page = document.querySelector(`.page`),
       addPlaceBtn = page.querySelector(`.profile__add-button`),
       closeProfilePopupBtn = page.querySelector(`button[name='close-profile-popup']`),
       closeAddPopupBtn = page.querySelector(`button[name='close-add-popup']`),
-      closeImagePopupBtn = page.querySelector(`button[name='close-image-popup']`);
+      closeImagePopupBtn = page.querySelector(`button[name='close-image-popup']`),
+      closePopupBtns = Array.from(page.querySelectorAll(`.popup__close-button`));
 
 export{ page, imagePopup, profilePopup, addPlacePopup };
 
@@ -26,9 +27,11 @@ editProfileBtn.addEventListener( 'click', ()=> editProfile());
 addPlaceBtn.addEventListener('click', ()=> openPopup(addPlacePopup));
 editProfileForm.addEventListener('submit', submitProfileEdition);
 addPlaceForm.addEventListener(`submit`, submitPlaceAdding);
-closeProfilePopupBtn.addEventListener( 'click', ()=> closePopup(profilePopup));
-closeAddPopupBtn.addEventListener( 'click', ()=> closePopup(addPlacePopup));
-closeImagePopupBtn.addEventListener( 'click', ()=> closePopup(imagePopup));
+
+closePopupBtns.forEach( (btn) => {
+  const popup = btn.closest('.popup');
+  btn.addEventListener('click', () => closePopup(popup));
+});
 
 enableValidation({
   popupSelector:'.popup',

@@ -1,12 +1,12 @@
 function openPopup(popup) {
   popup.classList.add(`popup_opened`);
-  popup.addEventListener('click', closePopupWithMouse);
+  popup.addEventListener('mousedown', closePopupWithMouse);
   document.addEventListener('keydown', closePopupWithEsc);
 };
   
 function closePopup(popup){
   popup.classList.remove(`popup_opened`);
-  popup.removeEventListener('click', closePopupWithMouse);
+  popup.removeEventListener('mousedown', closePopupWithMouse);
   document.removeEventListener('keydown', closePopupWithEsc);
 };
   

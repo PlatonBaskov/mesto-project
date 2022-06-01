@@ -27,10 +27,13 @@ function submitProfileEdition (evt) {
 function submitPlaceAdding (evt) {
   evt.preventDefault();
   const placeValue = inputPlace.value,
+        submitButton = evt.target.querySelector('.form__submit-button'),
         linkValue = inputLink.value;
   addCard(placeValue, linkValue);
   closePopup(addPlacePopup)
   evt.target.reset();
+  submitButton.classList.add('form__submit-button_inactive');
+  submitButton.setAttribute('disabled', true);
 };
 
 export { editProfile, submitProfileEdition, submitPlaceAdding };
