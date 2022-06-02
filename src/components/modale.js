@@ -5,7 +5,7 @@ import { addCard } from "./cards.js";
 const inputName = document.querySelector(`input[name='user-name']`),
       inputJob= document.querySelector(`input[name='user-profession']`), 
       userName = document.querySelector(`.profile__name`),
-      userJob = document.querySelector(`.profile__profession`),
+      userJob = document.querySelector(`.profile__pr`),
       inputPlace = document.querySelector(`input[name='place-name']`),
       inputLink= document.querySelector(`input[name='place-link']`);
 
