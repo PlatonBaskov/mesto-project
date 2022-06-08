@@ -1,13 +1,21 @@
 import { profilePopup, addPlacePopup } from "./index.js";
 import { openPopup, closePopup } from "./utils.js";
 import { addCard } from "./cards.js";
+import { changeProfileData } from "./api.js";
 
 const inputName = document.querySelector(`input[name='user-name']`),
       inputJob= document.querySelector(`input[name='user-profession']`), 
       userName = document.querySelector(`.profile__name`),
       userJob = document.querySelector(`.profile__pr`),
+      userAvatar = document.querySelector(`.profile__image`),
       inputPlace = document.querySelector(`input[name='place-name']`),
       inputLink= document.querySelector(`input[name='place-link']`);
+
+function createUser(data){
+  userName.textContent = data.name;
+  userJob.textContent = data.about;
+  userAvatar.src = data.avatar;
+}      
 
 function editProfile() {
   inputName.value = userName.textContent;
@@ -19,6 +27,7 @@ function submitProfileEdition (evt) {
   evt.preventDefault(); 
   const nameValue = inputName.value,
         jobValue = inputJob.value;
+  changeProfileData(nameValue, jobValue)
   userName.textContent = nameValue;
   userJob.textContent = jobValue;
   closePopup(profilePopup)
@@ -36,4 +45,4 @@ function submitPlaceAdding (evt) {
   submitButton.setAttribute('disabled', true);
 };
 
-export { editProfile, submitProfileEdition, submitPlaceAdding };
+export { editProfile, submitProfileEdition, submitPlaceAdding, userName, userJob, createUser };

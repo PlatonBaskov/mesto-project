@@ -1,33 +1,7 @@
 import { imagePopup } from './index.js'
 import { openPopup } from './utils.js';
 
-const initialCards = [
-  {
-    name: 'Санкт-Петербург',
-    link: 'https://images.pexels.com/photos/1606876/pexels-photo-1606876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-  },
-  {
-    name: 'Выборг',
-    link: 'https://images.pexels.com/photos/8994594/pexels-photo-8994594.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-  ];
-/*------ Массив стартовых объектов галереи -------- */
+
 const photoCardTemplate = document.querySelector(`#photo-card-template`).content;
 const photoCards = document.querySelector(`.photo-cards__elements`);
 const popupImage = document.querySelector(`.popup__image`);
@@ -62,9 +36,15 @@ function createCard(cardName, cardImage) {
   return cardElement;
 };
 
+function createCards(cards) {
+  cards.forEach((item) => {
+  addCard(item.name, item.link);
+});
+};
+
 function addCard(cardName, cardImage) {
   const photoCard = createCard(cardName, cardImage);
   photoCards.prepend(photoCard);
 };
 
-export {addCard, initialCards};
+export {addCard, createCards};

@@ -1,3 +1,8 @@
+import { getUserInfo, user } from './api.js'
+import { userName, userJob } from './modale.js'
+
+console.log(getUserInfo())
+
 function openPopup(popup) {
   popup.classList.add(`popup_opened`);
   popup.addEventListener('mousedown', closePopupWithMouse);
@@ -22,4 +27,4 @@ function closePopupWithEsc(evt) {
   };
 };
 
-export { openPopup, closePopup };
+export { openPopup, closePopup};

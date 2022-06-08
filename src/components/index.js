@@ -1,7 +1,8 @@
 import { addCard, initialCards } from "./cards.js";
-import { openPopup, closePopup } from "./utils.js";
+import { openPopup, closePopup, createUser } from "./utils.js";
 import { enableValidation } from "./validate.js";
 import { editProfile, submitProfileEdition, submitPlaceAdding } from "./modale.js";
+import { getUserInfo, getInitialCards } from "./api.js";
 import '../pages/index.css';
 
 const page = document.querySelector(`.page`),
@@ -19,9 +20,9 @@ const page = document.querySelector(`.page`),
 
 export{ page, imagePopup, profilePopup, addPlacePopup };
 
-initialCards.forEach((item) => {
-  addCard(item.name, item.link);
-});
+getUserInfo();
+getInitialCards();
+
 
 editProfileBtn.addEventListener( 'click', ()=> editProfile());
 addPlaceBtn.addEventListener('click', ()=> openPopup(addPlacePopup));
@@ -42,4 +43,3 @@ enableValidation({
   inputErrorClass: 'form__item_type_error',
   errorClass: 'form__input-error_active'
 }); 
-
