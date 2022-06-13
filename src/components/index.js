@@ -1,7 +1,7 @@
 import { addCard, initialCards } from "./cards.js";
 import { openPopup, closePopup, createUser } from "./utils.js";
 import { enableValidation } from "./validate.js";
-import { editProfile, submitProfileEdition, submitPlaceAdding } from "./modale.js";
+import { editProfile, submitProfileEdition, submitPlaceAdding, submitAvatarChange } from "./modale.js";
 import { getUserInfo, getInitialCards } from "./api.js";
 import '../pages/index.css';
 
@@ -16,23 +16,25 @@ const page = document.querySelector(`.page`),
       closeProfilePopupBtn = page.querySelector(`button[name='close-profile-popup']`),
       closeAddPopupBtn = page.querySelector(`button[name='close-add-popup']`),
       closeImagePopupBtn = page.querySelector(`button[name='close-image-popup']`),
+      avatarPopup = page.querySelector(`.avatar-popup`),
+      submitAvatarChangeButton = page.querySelector(`form[name='user-avatar']`),
+      changeAvatarButton = page.querySelector(`.profile__image-overlay`),
       closePopupBtns = Array.from(page.querySelectorAll(`.popup__close-button`));
-
-export{ page, imagePopup, profilePopup, addPlacePopup };
-
-getUserInfo();
-getInitialCards();
-
 
 editProfileBtn.addEventListener( 'click', ()=> editProfile());
 addPlaceBtn.addEventListener('click', ()=> openPopup(addPlacePopup));
+changeAvatarButton.addEventListener('click', () => openPopup(avatarPopup));
 editProfileForm.addEventListener('submit', submitProfileEdition);
 addPlaceForm.addEventListener(`submit`, submitPlaceAdding);
+submitAvatarChangeButton.addEventListener(`submit`, submitAvatarChange)
 
 closePopupBtns.forEach( (btn) => {
   const popup = btn.closest('.popup');
   btn.addEventListener('click', () => closePopup(popup));
 });
+
+getUserInfo();
+getInitialCards();
 
 enableValidation({
   popupSelector:'.popup',
@@ -43,3 +45,5 @@ enableValidation({
   inputErrorClass: 'form__item_type_error',
   errorClass: 'form__input-error_active'
 }); 
+
+export { imagePopup, profilePopup, addPlacePopup, avatarPopup }

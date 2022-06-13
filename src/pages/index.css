@@ -11,8 +11,7 @@
 @import url('../blocks/profile/__name-container/profile__name-container.css');
 @import url('../blocks/profile/__name/profile__name.css');
 @import url('../blocks/profile/__image/profile__image.css');
-/*почему-то profile__profession перестал подключаться, если удалить - перестает подключаться*/
-@import url('../blocks/profile/__pr/profile__profession.css');
+@import url('../blocks/profile/__profession/profile__profession.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
 @import url('../blocks/photo-cards/photo-cards.css');
 @import url('../blocks/photo-cards/__elements/photo-cards__elements.css');
@@ -41,4 +40,10 @@
 @import url('../blocks/form/__input-error/form__input-error.css');
 @import url('../blocks/form/__submit-button/form__submit-button.css');
 @import url('../blocks/form/__submit-button/_inactive/form__submit-button_inactive.css');
-@import url('../blocks/profile/__pr/profile_pr.css');
+@import url('../blocks/photo-card/__likes/photo-card__likes.css');
+@import url('../blocks/photo-card/__delete-button/_active/photo-card__delete-button_active.css');
+@import url('../blocks/photo-card/__likes-container/photo-card__likes-container.css');
+@import url('../blocks/profile/__image-overlay/profile__image-overlay.css');
+@import url('../blocks/profile/__image-container/profile__image-container.css');
+
+
