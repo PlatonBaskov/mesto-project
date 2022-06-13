@@ -1,4 +1,4 @@
-import { profilePopup, addPlacePopup, avatarPopup } from "./index.js";
+import { profilePopup, addPlacePopup, avatarPopup, userId } from "./index.js";
 import { openPopup, closePopup, renderUser } from "./utils.js";
 import { changeProfileData, postCardOnServe, changeUserAvatar } from "./api.js";
 import { addCard } from "./cards.js";
@@ -46,7 +46,7 @@ function submitPlaceAdding (evt) {
   renderLoading(true, submitButton)      
   postCardOnServe(placeValue, linkValue)
   .then((card)=>{
-    addCard(card)
+    addCard(card, userId)
     closePopup(addPlacePopup)
     evt.target.reset();
     submitButton.classList.add('form__submit-button_inactive');

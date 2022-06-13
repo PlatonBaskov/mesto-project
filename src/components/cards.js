@@ -59,6 +59,9 @@ function createCard(card, userID) {
     .then(()=>{
       cardElement.remove()
     })
+    .catch(err => {
+      console.log(err)
+    });  
   });
 
   photoCardImage.addEventListener('click', (evt)=> {
@@ -78,7 +81,6 @@ function addCard(card, userID) {
 function createCards(cards, userID){
   cards.forEach((card) => {
   addCard(card, userID);
-    
 });
 }
 

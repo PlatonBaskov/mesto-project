@@ -35,25 +35,15 @@ closePopupBtns.forEach( (btn) => {
   btn.addEventListener('click', () => closePopup(popup));
 });
 
-getUserInfo()
-.then((result) => {
-  const user = result
-  userId = user._id;
-  renderUser(user)
-})
-
-.catch((err)=>{
-  console.log(err)
-})
-
-getInitialCards()
-.then((result) => {
-  const cards = result;
-  createCards(cards, userId)
-})
-.catch((err)=>{
-  console.log(err)
-})
+Promise.all([getUserInfo(), getInitialCards()])
+  .then(([userData, cards]) => {
+      userId = userData._id;
+      renderUser(userData)
+      createCards(cards, userId)
+  })
+  .catch(err => {
+    console.log(err)
+  });
 
 enableValidation({
   popupSelector:'.popup',
