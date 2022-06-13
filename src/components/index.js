@@ -1,9 +1,11 @@
-import { addCard, initialCards } from "./cards.js";
-import { openPopup, closePopup, createUser } from "./utils.js";
+import { createCards } from "./cards.js";
+import { openPopup, closePopup, renderUser } from "./utils.js";
 import { enableValidation } from "./validate.js";
 import { editProfile, submitProfileEdition, submitPlaceAdding, submitAvatarChange } from "./modale.js";
 import { getUserInfo, getInitialCards } from "./api.js";
 import '../pages/index.css';
+
+let userId;
 
 const page = document.querySelector(`.page`),
       profilePopup = page.querySelector(`.profile-popup`),
@@ -33,8 +35,25 @@ closePopupBtns.forEach( (btn) => {
   btn.addEventListener('click', () => closePopup(popup));
 });
 
-getUserInfo();
-getInitialCards();
+getUserInfo()
+.then((result) => {
+  const user = result
+  userId = user._id;
+  renderUser(user)
+})
+
+.catch((err)=>{
+  console.log(err)
+})
+
+getInitialCards()
+.then((result) => {
+  const cards = result;
+  createCards(cards, userId)
+})
+.catch((err)=>{
+  console.log(err)
+})
 
 enableValidation({
   popupSelector:'.popup',
@@ -46,4 +65,4 @@ enableValidation({
   errorClass: 'form__input-error_active'
 }); 
 
-export { imagePopup, profilePopup, addPlacePopup, avatarPopup }
+export { imagePopup, profilePopup, addPlacePopup, avatarPopup, userId }

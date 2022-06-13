@@ -10,7 +10,8 @@ const photoCardTemplate = document.querySelector(`#photo-card-template`).content
   popupImage = document.querySelector(`.popup__image`),
   popupCaption = document.querySelector(`.popup__caption`);
 
-function createCard(card) {
+function createCard(card, userID) {
+  
   const cardElement = photoCardTemplate.querySelector(`.photo-card`).cloneNode(true),
    photoCardImage = cardElement.querySelector(`.photo-card__image`),
    photoCardName = cardElement.querySelector(`.photo-card__title`),
@@ -29,23 +30,35 @@ function createCard(card) {
   
   likeButton.addEventListener('click', (evt)=> {
     if(evt.target.classList.contains(`photo-card__like-button_active`)) {
-      evt.target.classList.remove(`photo-card__like-button_active`)
       hateTheCard(card._id, photoCardLikes)
-      photoCardLikes.textContent = card.likes.length;
+      .then((data)=>{
+        evt.target.classList.remove(`photo-card__like-button_active`)
+        photoCardLikes.textContent = data.likes.length;  
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
     } else {
-      evt.target.classList.add(`photo-card__like-button_active`)
       loveTheCard(card._id, photoCardLikes)
-      photoCardLikes.textContent = card.likes.length;
+      .then((data)=>{
+        evt.target.classList.add(`photo-card__like-button_active`)
+        photoCardLikes.textContent = data.likes.length;
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
     }
-  }); 
+  });
   
   const deleteButton = cardElement.querySelector(`.photo-card__delete-button`);
-  if(card.owner.name === document.querySelector('.profile__name').textContent){
+  if(card.owner._id === userID){
     deleteButton.classList.add('photo-card__delete-button_active')
   }
   deleteButton.addEventListener('click',(evt)=> {
-    cardElement.remove();
-    kickCardFromServe(card._id);
+    kickCardFromServe(card._id)
+    .then(()=>{
+      cardElement.remove()
+    })
   });
 
   photoCardImage.addEventListener('click', (evt)=> {
@@ -57,14 +70,14 @@ function createCard(card) {
   return cardElement;
 };
 
-function addCard(card) {
-  const photoCard = createCard(card);
+function addCard(card, userID) {
+  const photoCard = createCard(card, userID);
   photoCards.prepend(photoCard);
 };
 
-function createCards(cards){
+function createCards(cards, userID){
   cards.forEach((card) => {
-  addCard(card);
+  addCard(card, userID);
     
 });
 }

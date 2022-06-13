@@ -1,13 +1,12 @@
-import { getUserInfo, user } from './api.js'
-import { userName, userJob } from './modale.js'
+import { userId } from './index.js'
+const userName = document.querySelector('.profile__name'),
+userJob = document.querySelector('.profile__profession'),
+userAvatar = document.querySelector('.profile__image');
 
 function renderUser(user){
-  const userName = document.querySelector('.profile__name'),
-     userJob = document.querySelector('.profile__profession'),
-     userAvatar = document.querySelector('.profile__image');
   userName.textContent = user.name;
   userJob.textContent = user.about;
-  userAvatar.src = user.avatar;  
+  userAvatar.src = user.avatar;
 }
 
 function openPopup(popup) {
