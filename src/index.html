@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="Россия, путешествия, фото, фотографии, страна, родина, Новгород, Карелия, Алтай, красота" />
+        <meta name="description" content="Галерея лучших туристических мест РФ." />
+        <meta name="Author" content="Платон Басков" />
+        <title>Mesto Russia</title>
+    </head>
+    <body class="page">
+        <header class="header page__centered-block">
+            <a class="header__logo" href="./index.html"></a>
+        </header>
+        <main>
+            <section class="profile page__centered-block">
+                <div class="profile__image-container">  
+                  <img class="profile__image" src="" alt="Аватар пользователя" />
+                  <div class ="profile__image-overlay"></div>
+                </div>
+                <div class="profile__info">
+                    <div class="profile__name-container">
+                        <h1 class="profile__name"></h1>
+                        <button class="profile__edit-button" type="button"></button>
+                    </div>
+                    <p class="profile__profession"></p>
+                </div>
+                <button class="profile__add-button" type="button"></button>
+            </section>
+            <section class="photo-cards page__centered-block">
+                <ul class="photo-cards__elements">
+                </ul>
+            </section>
+        </main>
+        <footer class="footer page__centered-block">
+            <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+        </footer>
+        <!-- Форма изменения профиля -->
+        <div class="popup profile-popup">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <button class="popup__close-button" type="button" name="close-profile-popup"></button>
+                <form class="form" name="user-info" novalidate>
+                    <fieldset class="form__input-container">
+                        <div class="form__field">
+                          <input type="text" name="name" class="form__item" placeholder="Ваше имя?" id="userName" minlength="2" maxlength="40" required/>
+                          <span class="userName-error form__input-error"></span>
+                        </div>
+                        <div class="form__field">
+                          <input type="text" name="about" class="form__item" placeholder="Ваша профессия?" id="userProf" minlength="2" maxlength="200" required/>
+                          <span class="userProf-error form__input-error"></span>
+                        </div>
+                    </fieldset>
+                    <input class="form__submit-button" type="submit" value="Сохранить">
+                </form>
+            </div>
+        </div>
+        <!-- Форма изменения профиля -->
+        <!-- Форма добавления картинки -->
+        <div class="popup add-place-popup">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое место</h2>
+                <button class="popup__close-button" type="button" name="close-add-popup"></button>
+                <form class="form" name="add-new-place" novalidate>
+                    <fieldset class="form__input-container">
+                        <div class="form__field">
+                          <input type="text" name="name" class="form__item" placeholder="Название" id="placeName" minlength="2" maxlength="30" required/>
+                          <span class="placeName-error form__input-error"></span>
+                        </div>
+                        <div class="form__field">
+                        <input type="url" name="link" class="form__item" placeholder="Ссылка на картинку" id="placeLink" required/>
+                        <span class="placeLink-error form__input-error"></span>
+                        </div>
+                    </fieldset>
+                    <input class="form__submit-button" type="submit" value="Создать">
+                </form>
+            </div>
+        </div>
+
+        <!-- Шаблон карточки для галереи-->
+        <template id="photo-card-template">
+        <li class="photo-card">
+            <img class="photo-card__image" src="" alt="" />
+            <button class="photo-card__delete-button" type="button"></button>
+            <div class="photo-card__info">
+                <h2 class="photo-card__title"></h2>
+                <div class="photo-card__likes-container">
+                  <button class="photo-card__like-button" type="button"></button>
+                  <span class="photo-card__likes"></span>
+                </div>
+            </div>
+        </li>
+        </template>
+        <!-- Шаблон карточки для галереи-->
+        <!--Открытие картинки по клику-->
+        <div class="popup image-popup">
+            <figure class="popup__figure">
+                <button class="popup__close-button" type="button" name="close-image-popup"></button>
+                <img class="popup__image" src="" alt ="">
+                <figcaption class="popup__caption">
+                </figcaption>
+            </figure>
+        </div>
+        <!-- шаблон попапа аватара -->
+        <div class="popup avatar-popup">
+            <div class="popup__container">
+                <h2 class="popup__title">Обновить аватар</h2>
+                <button class="popup__close-button" type="button" name="close-avatar-popup"></button>
+                <form class="form" name="user-avatar" novalidate>
+                    <fieldset class="form__input-container">
+                        <div class="form__field">
+                            <input type="url" name="link" class="form__item" placeholder="Ссылка на картинку" id="avatarLink" required/>
+                            <span class="avatarLink-error form__input-error"></span>
+                        </div>
+                    </fieldset>
+                    <input class="form__submit-button" type="submit" value="Сохранить">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
